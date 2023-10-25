@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row m-3">
+    <div class="col offset-md-2">
+      <h4>レシピ詳細</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div><%= image_tag @recipe.get_profile_image(100,100) %></div>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th scope="row">レシピ名</th>
+            <td><%= @recipe.recipe_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">レシピ説明</th>
+            <td><%= @recipe.introduction %></td>
+           </tr>
+           <tr>
+            <th scope="row">材料</th>
+            <td ><%= @recipe.item %></td>
+           </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+   <div class="row justify-content-md-center">
+    <div class="form-group">
+      <%= link_to "編集する", edit_recipe_path(@recipe.id), class:"btn btn-sm btn-success" %>
+    </div>
+  </div>
+
+</div>
