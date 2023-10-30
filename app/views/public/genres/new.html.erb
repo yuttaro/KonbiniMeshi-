@@ -1,5 +1,5 @@
 <h2>ジャンルの追加</h2>
- <%= form_with model: @genre, local: true do |f| %>
+ <%= form_with model: @genre, url: genres_path, method: :post do |f| %>
     <div class='from_input'>
       <%= f.label :name %>
       <%= f.text_field :name %>

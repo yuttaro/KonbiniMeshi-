@@ -3,7 +3,7 @@
     <tbody>
       <% @genres.each do |cate| %>
         <tr>
-          <td><%= link_to cate.name, posts_path(genre_id: cate.id) %></td>
+          <td><%= link_to cate.name, edit_genre_path(id: cate.id) %></td>
           <td><%= cate.created_at.to_s(:datetime_jp) %>作成</td>
         </tr>
       <% end %>

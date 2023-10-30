@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-md-8 offset-md-1">
+    <h2>レシピ一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>introduction</th>
+          <th></th>
+        </tr>
+        <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.get_recipe_image(100,100) %>
+            <% end %>
+          </td>
+          <td><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></td>
+          <td><%= recipe.introduction %></td>
+          <td><%= link_to "#{recipe.post_comments.count} コメント", recipe_path(recipe.id) %></td>
+        </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>
