@@ -1,0 +1,7 @@
+   <h1>いいねしたポスト一覧</h1>
+
+   <ul>
+     <% @favorite_recipes.each do |recipe| %>
+       <li><%= recipe.recipe_name %></li>
+     <% end %>
+   </ul>

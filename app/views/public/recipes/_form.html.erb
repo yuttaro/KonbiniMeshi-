@@ -1,0 +1,10 @@
+<%= form_with(model: recipe) do |form| %>
+  <!-- レシピのフォームフィールド -->
+
+  <%= form.fields_for :ingredients do |ingredient_form| %>
+    <%= render 'ingredient_fields', f: ingredient_form %>
+    <%= link_to_add_association 'Add ingredient', form, :ingredients, partial: 'ingredient_fields' %>
+  <% end %><!-- その他のフォームフィールド -->
+
+  <%= form.submit %>
+<% end %>

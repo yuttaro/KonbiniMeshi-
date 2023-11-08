@@ -1,16 +1,29 @@
 class Public::UsersController < ApplicationController
+
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @recipes = @user.recipes
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+  end
+
+  def favorites
+      @user = User.find(params[:id])
+      @favorite_recipes = @user.favorite_recipes
   end
 
   def update
     user = current_user
     user.update(user_params)
-    redirect_to users_mypage_path
+    redirect_to user_path
+  end
+
+  def dereete
+    user = current_user
+    user.update(user_params)
+    redirect_to user_path
   end
 
   private

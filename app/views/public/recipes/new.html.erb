@@ -22,7 +22,22 @@
     </div>
     <div class="form-group">
       <label for="price">材料</label>
-      <%= f.text_field :item, class: 'form-control' %>
+      <div class="add-botton-box">
+        <%= link_to_add_association "追加ボタン", f, :ingredients,
+        class: 'add_fields',
+        id: 'add-btn',
+        data: {
+          association_insertion_node: '#detail-association-insertion-point',
+          association_insertion_method: 'after'
+          }
+        %>
+      </div>
+      <div id="detail-association-insertion-point"></div>
+
+      <!-- 2）動的に追加するフォーム(renderで飛ばしている先が追加される) -->
+      <%= f.fields_for :ingredients do |form| %>
+        <%= render "ingredient_fields", f: form %>
+      <% end %>
     </div>
     <div class="form-group">
       <label for="price">作り方</label>

@@ -23,7 +23,11 @@
            </tr>
            <tr>
             <th scope="row">材料</th>
-            <td ><%= @recipe.item %></td>
+            <td >
+              <% @recipe.ingredients.each do |ingredient| %>
+                <%= ingredient.name %><br>
+              <% end %>
+            </td>
            </tr>
            <% if @recipe.user == current_user %>
               <td><%= link_to "Edit", edit_recipe_path(@recipe), class:"btn btn-sm btn-success" %></td>

@@ -17,13 +17,23 @@ devise_for :users, skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
+namespace :admin do
+    get '/' => 'homes#top'
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :komment, only: [:index, :destroy]
+    resources :recipes, only: [:index, :show, :destroy]
+end
 
 scope module: :public do
     root to: 'homes#top'
+    get "/search" => "searches#search"
     get '/about' => 'homes#about'
-    get '/users/mypage' => 'users#show'
-    get '/users/information/edit' => 'users#edit'
-    patch '/users/information' => 'users#update'
+    resources :users do
+      member do
+        get :favorites
+      end
+    end
+
     resources :recipes do
       resource :favorite, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
