@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      recipe:
+        recipe_name: レシピ名
+        genre:
+          other: "ジャンル"
+        steps:
+          other: "手順"
+        ingredients:
+          other: "材料"
+      step:
+        description: 手順
+      ingredient:
+        name: 材料
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:
+         post_code: 郵便番号

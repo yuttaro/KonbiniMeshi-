@@ -1,13 +1,15 @@
-<div class="container">
-  <div class="col-md-8 offset-md-1">
-    <h2>レシピ一覧</h2>
+<div class="row m-3">
+  <div class="col offset-md-2">
+    <h4>レシピ一覧</h4>
+  </div>
+</div>
 
     <table class="table">
       <thead>
         <tr>
           <th></th>
-          <th>Title</th>
-          <th>introduction</th>
+          <th>レシピ</th>
+          <th>レシピ説明</th>
           <th></th>
         </tr>
         <% @recipes.each do |recipe| %>
@@ -18,7 +20,7 @@
           </td>
           <td><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></td>
           <td><%= recipe.introduction %></td>
-          <td><%= link_to "#{recipe.post_comments.count} コメント", recipe_path(recipe.id) %></td>
+          <td>♡<%= recipe.favorites.count %> いいね</td>
         </tr>
         <% end %>
       </thead>

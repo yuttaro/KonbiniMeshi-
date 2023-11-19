@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row m-3">
+    <div class="col offset-md-2">
+      <h4>アカウントの設定</h4>
+    </div>
+  </div>
+
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+  <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+
+  <div class="form-group">
+    <label for="item_name">名前</label>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label for="item_introduction">プロフィール</label>
+    <%= f.text_area :profile, class: 'form-control'%>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="form-group">
+      <%= f.submit "変更を保存する", class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <% end %>
+</div>
+</div>

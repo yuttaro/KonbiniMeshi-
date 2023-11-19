@@ -1,16 +1,12 @@
-
-  <h1>マイページ</h1>
-  <div class="row ml-5">
-    <h4>登録情報
-      <div class="btn ml-5">
-        <p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
-      </div>
-    </h4>
+<div class="row m-3">
+  <div class="col offset-md-2">
+    <h4>マイページ</h4>
   </div>
+</div>
 
 <div class="row">
   <div class="col-md-3">
-    <h2>User info</h2>
+    <h4>ユーザー情報</h4>
     <div>
       <%#= image_tag user.get_profile_image(100,100) %>
       <table class="table">
@@ -26,24 +22,31 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to edit_user_path, class:"btn btn-outline-secondary btn-block" do %>
-      <i class="fa-solid ffas fa-user-cog"></i>
+      <% if @user == current_user %>
+        <%= link_to edit_user_path, class:"btn btn-outline-secondary btn-block" do %>
+        <i class="fa-solid ffas fa-user-cog"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
 
   <div class="col-md-8 offset-md-1">
-    <h2>レシピ一覧
+    <h4>レシピ一覧
+    <% if @user == current_user %>
       <div class="btn ml-5">
-        <%= link_to "投稿", new_recipe_path, class:"btn btn-success btn-sm" %>
+        <%= link_to "レシピ投稿", new_recipe_path, class:"btn btn-success btn-sm" %>
       </div>
-    </h2>
+      <div class="btn ml-5">
+        <%=link_to"いいねしたレシピ",favorites_user_path(@user) %>
+      </div>
+    <% end %>
+    </h4>
     <table class="table">
       <thead>
         <tr>
           <th></th>
-          <th>title</th>
-          <th>Opinion</th>
+          <th>レシピ</th>
+          <th>レシピ説明</th>
         </tr>
         <% @recipes.each do |recipe| %>
         <tr>

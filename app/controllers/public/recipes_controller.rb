@@ -3,6 +3,7 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredient = @recipe.ingredients.build
+    @step = @recipe.steps.build
   end
 
   def index
@@ -12,8 +13,11 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save
-    redirect_to recipes_path
+    if @recipe.save
+        redirect_to user_path(@recipe.user.id)
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,23 +30,27 @@ class Public::RecipesController < ApplicationController
   end
 
   def update
-    recipe = Recipe.find(params[:id])
-    recipe.update(item_params)
-    redirect_to public_recipe_path(recipe.id)
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+        redirect_to recipe_path(@recipe.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy
-    redirect_to recipes_path
+    @recipe = Recipe.find(params[:id]) # recipe変数を定義
+    @recipe.destroy # レコードを削除
+    redirect_to user_path(@recipe.user.id) # リダイレクト先に@recipeを使用
   end
 
   private
 
   def recipe_params
     params.require(:recipe).permit(
-      :recipe_name, :introduction, :item, :procedure, :recipe_image, :genre_id,
-      ingredients_attributes:[:id, :recipe_id, :name, :amount, :_destroy]
+      :recipe_name, :introduction, :procedure, :recipe_image, :genre_id,
+      ingredients_attributes:[:id, :recipe_id, :name, :amount, :_destroy],
+      steps_attributes:[:id, :recipe_id, :description, :_destroy]
       )
   end
 

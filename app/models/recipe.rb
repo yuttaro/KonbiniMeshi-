@@ -4,9 +4,15 @@ class Recipe < ApplicationRecord
   belongs_to :genre
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :ingredients
+  has_many :ingredients, dependent: :destroy
+  has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :steps, reject_if: :all_blank, allow_destroy: true
   has_one_attached :recipe_image
+
+  validates :recipe_name, presence: true, length: { maximum: 50 }
+  validates :ingredients, length: { minimum: 1, message: "は1つ以上入力してください" }
+  validates :steps, length: { minimum: 1, message: "は1つ以上入力してください" }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

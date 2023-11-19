@@ -2,6 +2,14 @@
   <div class="m-3">
     <div class="col offset-md-2">
       <h4>レシピ新規投稿</h4>
+      <% if @recipe.errors.any? %>
+        <%= @recipe.errors.count %>件のエラーが発生しました
+        <ul style="color: red">
+          <% @recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 
@@ -20,6 +28,7 @@
       <label for="item_introduction">レシピ紹介</label>
       <%= f.text_area :introduction, class: 'form-control'%>
     </div>
+
     <div class="form-group">
       <label for="price">材料</label>
       <div class="add-botton-box">
@@ -39,12 +48,29 @@
         <%= render "ingredient_fields", f: form %>
       <% end %>
     </div>
+
     <div class="form-group">
       <label for="price">作り方</label>
-      <%= f.text_area :procedure, class: 'form-control' %>
+      <div class="add-botton-box">
+        <%= link_to_add_association "追加ボタン", f, :steps,
+        class: 'add_fields',
+        id: 'add-btn',
+        data: {
+          association_insertion_node: '#detail2-association-insertion-point',
+          association_insertion_method: 'after'
+          }
+        %>
+      </div>
+      <div id="detail2-association-insertion-point"></div>
+
+      <!-- 2）動的に追加するフォーム(renderで飛ばしている先が追加される) -->
+      <%= f.fields_for :steps do |form| %>
+        <%= render "step_fields", f: form %>
+      <% end %>
     </div>
-    <div class="form_input">
-        <%= f.label :genre_id %>
+
+    <div class="form-group">
+        <%= f.label :genre_id,'ジャンル' %>
 
         <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
     </div>

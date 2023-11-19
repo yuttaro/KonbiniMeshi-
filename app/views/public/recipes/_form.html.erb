@@ -6,5 +6,10 @@
     <%= link_to_add_association 'Add ingredient', form, :ingredients, partial: 'ingredient_fields' %>
   <% end %><!-- その他のフォームフィールド -->
 
+  <%= form.fields_for :steps do |step_form| %>
+    <%= render 'step_fields', f: step_form %>
+    <%= link_to_add_association 'Add step', form, :steps, partial: 'step_fields' %>
+  <% end %><!-- その他のフォームフィールド -->
+
   <%= form.submit %>
 <% end %>

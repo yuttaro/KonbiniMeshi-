@@ -1,1 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
+
+  /* フォントの変更 */
+  body {
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  h4 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+  }
+  
+  

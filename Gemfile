@@ -60,3 +60,5 @@ gem 'devise'
 gem 'ransack'
 
 gem 'cocoon'
+
+gem 'rails-i18n'

@@ -8,21 +8,17 @@
   <table class="table">
     <thead class="table-dark">
       <tr>
-        <th>会員ID</th>
         <th>氏名</th>
+        <th>コメント</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <% @user.each do |user| %>
+      <% @post_comments.each do |post_comment| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= link_to admin_user_path(user.id) do %>
-          <%= user.name %>
-          <% end %>
-        </td>
-        <td><%= user.email %>
-        </td>
+        <td><%= post_comment.user.name %></td>
+        <td><%= post_comment.comment %></td>
+        <td><%= link_to "削除", admin_post_comment_path(post_comment.recipe, post_comment), method: :delete %></td>
       </tr>
       <% end %>
     </tbody>

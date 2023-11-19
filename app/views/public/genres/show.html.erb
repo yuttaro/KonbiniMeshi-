@@ -1,8 +1,10 @@
-<div class="row m-3">
+ <div class="row m-3">
   <div class="col offset-md-2">
-    <h4>いいねしたレシピ</h4>
+    <h4><%= @genre.name %></h4>
   </div>
-</div>
+ </div>
+
+ </div>
     <table class="table">
       <thead>
         <tr>
@@ -10,7 +12,7 @@
           <th>レシピ</th>
           <th>レシピ説明</th>
         </tr>
-        <% @favorite_recipes.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
         <tr>
           <td><%= image_tag recipe.get_recipe_image(100,100) %></td>
           <td><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></td>
@@ -19,3 +21,4 @@
         <% end %>
       </thead>
     </table>
+  </div>

@@ -1,12 +1,8 @@
-<!-- class="nested-fields"　←ここ絶対に必要です -->
 <div class="nested-fields">
   <table>
     <tr>
       <td class="">
-        <%= f.text_field :name, :placeholder => "商品名" %>
-      </td>
-      <td class="">
-        <%= f.text_field :amount, :placeholder => "数量" %>
+        <%= f.text_area :description, :placeholder => "手順", class: 'form-control' %>
       </td>
       <td class="td-fixed-delete">
         <!-- 削除ボタン -->

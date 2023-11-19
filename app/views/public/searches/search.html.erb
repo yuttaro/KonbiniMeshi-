@@ -1,23 +1,50 @@
-<h2>Results index</h2>
+<div class="row m-3">
+  <div class="col offset-md-2">
+    <h4>検索結果</h4>
+  </div>
+</div>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>introduction</th>
+        <th>レシピ数</th>
+      </tr>
+    </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-        </tr>
+      <tr>
+        <td><%= link_to user_path(user.id) do %>
+          <%= user.name %>
+          <% end %>
+        </td>
+        <td><%= user.profile%></td>
+        <td><%= user.recipes.count %> </td>
+      </tr>
       <% end %>
     </tbody>
+  </table>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
-    <tbody>
-      <% @recipes.each do |recipe| %>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></td>
+          <th></th>
+          <th>レシピ</th>
+          <th>レシピ説明</th>
         </tr>
-      <% end %>
-    </tbody>
+        <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= image_tag recipe.get_recipe_image(100,100) %></td>
+          <td><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></td>
+          <td><%= recipe.introduction %></td>
+        </tr>
+        <% end %>
+      </thead>
+    </table>
   <% end %>
 </table>

@@ -1,0 +1,10 @@
+<h2>ジャンルの追加</h2>
+ <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+    <div class='from_input'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form_action">
+      <%= f.submit "登録する", class: "btn btn-primary" %>
+    </div>
+ <% end %>
