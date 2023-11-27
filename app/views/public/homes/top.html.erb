@@ -13,9 +13,13 @@
       <div class="col-md-3">
         <div class="card">
             <%= image_tag recipe.get_recipe_image(300,300) %>
+              <% if user_signed_in? %>
                 <%= link_to recipe_path(recipe.id) do %>
                   <p>レシピ名：<%= recipe.recipe_name %></p>
                 <% end %>
+              <% else %>
+                <p>レシピ名：<%= recipe.recipe_name %></p>
+              <% end %>
         </div>
       </div>
     <%end%>

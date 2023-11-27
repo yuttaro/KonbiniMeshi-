@@ -1,13 +1,16 @@
-<div class="container">
+<div class="row m-3">
+  <div class="col offset-md-2">
+    <h4>マイページ</h4>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-3">
-    <h4>ユーザー情報</h4>
+    <h4>ユーザーページ</h4>
     <div>
       <%#= image_tag user.get_profile_image(100,100) %>
       <table class="table">
-        <tr></tr>
-        <tbody></tbody>
+        <tbody>
           <tr>
             <th>name</th>
             <th><%= @user.name %></th>
@@ -15,6 +18,10 @@
           <tr>
             <th>profile</th>
             <th><%= @user.profile %></th>
+          </tr>
+          <tr>
+            <th>email</th>
+            <th><%= @user.email %></th>
           </tr>
         </tbody>
       </table>

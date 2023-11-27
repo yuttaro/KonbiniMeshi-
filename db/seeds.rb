@@ -9,3 +9,7 @@ Admin.create!(
   email: "a@a",
   password: "123456"
 )
+
+Genre.create(name: "おにぎり")
+Genre.create(name: "ラーメン")
+Genre.create(name: "サラダ")
