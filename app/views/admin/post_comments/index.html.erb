@@ -18,7 +18,7 @@
       <tr>
         <td><%= post_comment.user.name %></td>
         <td><%= post_comment.comment %></td>
-        <td><%= link_to "削除", admin_post_comment_path(post_comment.recipe, post_comment), method: :delete %></td>
+        <td><%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete %></td>
       </tr>
       <% end %>
     </tbody>

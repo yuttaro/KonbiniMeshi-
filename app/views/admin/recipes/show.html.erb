@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row m-3">
-    <div class="col offset-md-2">
-      <h4>レシピ詳細</h4>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h2 class="text-center"><%= @recipe.recipe_name %></h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      <div><%= image_tag @recipe.get_recipe_image(300,300) %></div>
+      <div><%= image_tag @recipe.get_recipe_image(500,500) %></div>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -44,13 +44,31 @@
     </div>
   </div>
 
-  <div>
-    <p>コメント件数：<%= @recipe.post_comments.count %></p>
-    <% @recipe.post_comments.each do |post_comment| %>
-      <%= post_comment.user.name %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-      <%= link_to "削除", recipe_post_comment_path(post_comment.recipe, post_comment), method: :delete %><br>
-    <% end %>
-  </div>
+    <div class="row ">
+      <div class="col-md-5">
+        <div>
+          <p>コメント件数：<%= @recipe.post_comments.count %></p>
+          <% @recipe.post_comments.each do |post_comment| %>
+            <%= post_comment.user.name %>
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+            <%= link_to "削除", admin_post_comment_path(post_comment), method: :delete %><br>
+          <% end %>
+        </div>
+      </div>
 
+      <div class="col-md-5">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">投稿者</th>
+              <td><%= link_to @recipe.user.name, user_path(@recipe.user.id) %></td>
+            </tr>
+            <tr>
+              <th scope="row">プロフィール</th>
+              <td><%= @recipe.user.profile %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 </div>

@@ -1,10 +1,15 @@
-<h1>カテゴリ一覧</h1>
+<div class="row m-3">
+  <div class="col offset-md-2">
+    <h4>ジャンル一覧</h4>
+  </div>
+</div>
   <table class="table table-hover">
     <tbody>
-      <% @genres.each do |cate| %>
+      <% @genres.each do |genre| %>
         <tr>
-          <td><%= link_to cate.name, edit_genre_path(id: cate.id) %></td>
-          <td><%= cate.created_at.to_s(:datetime_jp) %>作成</td>
+          <td><%= genre.name %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(id: genre.id), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除する", admin_genre_path(id: genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
       <% end %>
     </tbody>

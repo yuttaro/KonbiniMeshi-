@@ -19,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
 namespace :admin do
     get '/' => 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :post_comments, only: [:index, :destroy]
     resources :recipes, only: [:index, :show, :edit, :update, :destroy]
     resources :genres

@@ -1,12 +1,12 @@
 <div class="row m-3">
   <div class="col offset-md-2">
-    <h4>マイページ</h4>
+    <h4>ユーザーページ</h4>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-3">
-    <h4>ユーザーページ</h4>
+  <div class="col-md-4">
+    <h4>ユーザー情報</h4>
     <div>
       <%#= image_tag user.get_profile_image(100,100) %>
       <table class="table">
@@ -31,14 +31,14 @@
     </div>
   </div>
 
-  <div class="col-md-8 offset-md-1">
+  <div class="col-md-7 offset-md-1">
     <h4>レシピ一覧</h4>
     <table class="table">
       <thead>
         <tr>
           <th></th>
-          <th>title</th>
-          <th>introduction</th>
+          <th>レシピ名</th>
+          <th>レシピ説明</th>
         </tr>
         <% @recipes.each do |recipe| %>
         <tr>
