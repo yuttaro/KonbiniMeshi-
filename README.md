@@ -1,24 +1,33 @@
-# README
+# コンビニ飯
+## サイト概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### サイトテーマ
 
-Things you may want to cover:
+コンビニの飲み物や食べ物をアレンジしたレシピを検索したり、投稿できるコミュニティサイト
 
-* Ruby version
+### テーマを選んだ理由
 
-* System dependencies
+コンビニでご飯をすませることが多く、１パターンな味に頭を悩ませていました。
+そんな時、コンビニのご飯をアレンジしている動画を見て、他の人のアレンジを知れるサービスがあれば便利だと考えました。
+また同じよう悩んでいる人の助けになると考え、このテーマにしました。
 
-* Configuration
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+・コンビニで飲み物やご飯を買う人
+・色々とアレンジレシピ考えてる人
 
-* Database creation
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+・自分がアレンジしたレシピを投稿する時
+・他の人のアレンジしたレシピを知りたい時
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+後ほど作成予定
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
